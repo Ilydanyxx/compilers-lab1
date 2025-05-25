@@ -1,0 +1,32 @@
+1. Language accepted by the automaton:
+
+The language consists of all words over the alphabet {a, b} that:
+- contain at least one 'a', and
+- contain at least one 'b', and
+- the first 'a' appears before the first 'b'.
+
+Formally: L = { w ∈ {a, b}* | ∃ i < j such that w[i] = 'a' and w[j] = 'b' }
+
+2. Why it is not deterministic:
+
+The automaton contains a state with multiple outgoing transitions labeled by the same symbol (e.g., two 'a' transitions from the same state), or ε-transitions (transitions without consuming input), which means the next state is not uniquely determined by the current state and input symbol.
+
+3. Determinised automaton (DFA):
+
+States: { S0, S1, S2 }
+
+Transitions:
+- S0 --a--> S1
+- S0 --b--> S0
+- S1 --a--> S1
+- S1 --b--> S2
+- S2 --a--> S2
+- S2 --b--> S2
+
+Start state: S0
+Accepting state: S2
+
+Explanation:
+- S0: no 'a' seen yet
+- S1: first 'a' seen, waiting for first 'b'
+- S2: both 'a' and 'b' seen, first 'a' was before first 'b'
